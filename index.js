@@ -1,4 +1,5 @@
 import { DomHandler } from "./scripts/domHandler.js";
+import { loadingPage } from "./scripts/pages/loadingPage.js";
 import { mainPage } from "./scripts/pages/mainPage.js";
 import { fetchProductsByCategory } from "./scripts/services/fetchProducts.js";
 import { STORE } from "./scripts/store.js";
@@ -8,9 +9,9 @@ import { STORE } from "./scripts/store.js";
     const productsPerCategory = await fetchProductsByCategory();
     console.log(productsPerCategory);
     STORE.setProducts(productsPerCategory);
-    return DomHandler.render(mainPage);
+    DomHandler.render(".root", loadingPage);
+    return setTimeout(() => { DomHandler.render(".root", mainPage)} , 6000);
   } catch (error) {
     console.log(error);
   }
-  DomHandler.render(mainPage)
 })();
