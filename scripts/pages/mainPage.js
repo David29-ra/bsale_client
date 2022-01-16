@@ -3,6 +3,16 @@ import { categoryNav } from "../components/categoryNav.js";
 import { STORE } from "../store.js";
 
 export const mainPage = (() =>{
+  function filterByCategory(e){
+    e.preventDefault();
+    console.log(e.target.innerText);
+    const category = e.target.innerText;
+    const filteredProducts = STORE.getProductsByCategory().filter(product => product.name === category);
+    const productsContainer = document.querySelector('.results-container');
+    productsContainer.innerHTML = "";
+    filteredProducts[0].products.forEach(product => productsContainer.innerHTML += cardProduct(product));
+  }
+
   return {
     render: () => {
       const products = STORE.getShuffledProducts();
@@ -28,6 +38,9 @@ export const mainPage = (() =>{
         </section>
       `;
     },
-    toListeners: () => {}
+    toListeners: () => {
+      const categories = document.querySelectorAll('.categories-container li');
+      categories.forEach(category => category.addEventListener('click', filterByCategory));
+    }
   }
 })();
