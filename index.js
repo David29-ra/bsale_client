@@ -8,8 +8,8 @@ import { STORE } from "./scripts/store.js";
   try {
     const productsPerCategory = await fetchProductsByCategory();
     STORE.setProductsByCategory(productsPerCategory);
-    // DomHandler.render(".root", loadingPage);
-    return DomHandler.render(".root", mainPage);
+    DomHandler.render(".root", loadingPage);
+    return setTimeout(() => DomHandler.render(".root", mainPage), 3000);
   } catch (error) {
     console.log(error);
   }
