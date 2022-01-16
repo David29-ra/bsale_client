@@ -7,8 +7,7 @@ import { STORE } from "./scripts/store.js";
 (async () =>{
   try {
     const productsPerCategory = await fetchProductsByCategory();
-    console.log(productsPerCategory);
-    STORE.setProducts(productsPerCategory);
+    STORE.setProductsByCategory(productsPerCategory);
     // DomHandler.render(".root", loadingPage);
     return DomHandler.render(".root", mainPage);
   } catch (error) {
