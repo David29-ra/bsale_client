@@ -1,5 +1,14 @@
 export const STORE = (function() {
   let products = [];
+  let productsByCategory = [];
+
+  function setProductsByCategory(apifetch) {
+    productsByCategory = apifetch;
+  }
+
+  function getProductsByCategory() {
+    return [...productsByCategory];
+  }
   
   function setProducts(productsPerCategory) {
     productsPerCategory.forEach(category => products = [...products, ...category.products])
@@ -11,6 +20,8 @@ export const STORE = (function() {
   }
   return {
     setProducts,
-    getProducts
+    getProducts,
+    setProductsByCategory,
+    getProductsByCategory
   }
 })()
