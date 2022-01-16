@@ -117,7 +117,7 @@
   color: #000;
 }
 
-.price {
+.product-price {
   background: #e32d2c;
   position: absolute;
   font-size: 1.3em;
@@ -126,11 +126,11 @@
   right: 10px;
 }
 
-.price.sale {
+.product-price.sale {
   background: #00ba2f;
 }
 
-.price.old {
+.product-price.old {
   font-size: 0.95em;
   padding: 4px 6px;
   text-decoration: line-through;

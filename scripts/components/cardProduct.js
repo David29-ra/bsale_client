@@ -8,9 +8,9 @@ export const cardProduct = function(product) {
       
       <div class="info">
         <div class="title"><a href="#">${name}</a></div>
-        ${discount == 0 ? `<div class='price'>$${price.toFixed(2)}</div>` : 
-                                  `<div class='price sale'>$${(price * 0.01 * (100 - discount)).toFixed(2)}</div>
-                                   <div class="price old">$${price.toFixed(2)}</div>`}
+        ${discount == 0 ? `<div class='product-price'>$${price.toFixed(2)}</div>` : 
+                                  `<div class='product-price sale'>$${(price * 0.01 * (100 - discount)).toFixed(2)}</div>
+                                   <div class="product-price old">$${price.toFixed(2)}</div>`}
       </div>
       
       <div class="actions-wrapper">
