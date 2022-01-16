@@ -11,7 +11,7 @@ export const cartItem = (product) => {
       <td class="qty"><input type="text" class="form-control" id="input1" value="1"></td>
       <td>${priceWithDiscount}</td>
       <td>
-        <img class="btn btn-sm btn-sm-close" src="./assets/icons/close.png" alt="close"/>
+        <img id=${id} class="btn btn-sm btn-sm-close" src="./assets/icons/close.png" alt="close"/>
       </td>
     </tr>`
 };

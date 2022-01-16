@@ -2,6 +2,7 @@ export const STORE = (function() {
   let products = [];
   let productsByCategory = [];
   let categories = []
+  let cart = [];
 
   function setProductsByCategory(datafetch) {
     productsByCategory = datafetch;
@@ -25,11 +26,21 @@ export const STORE = (function() {
   function getCategories() {
     return [...categories];
   }
+
+  function setCart(product) {
+    cart = [...cart, product];
+  }
+
+  function getCart() {
+    return [...cart];
+  }
   return {
     getProducts,
     getShuffledProducts,
     setProductsByCategory,
     getProductsByCategory,
-    getCategories
+    getCategories,
+    setCart,
+    getCart
   }
 })();

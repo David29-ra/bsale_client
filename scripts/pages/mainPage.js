@@ -1,6 +1,8 @@
 import { cardProduct } from "../components/cardProduct.js";
+import { cartItem } from "../components/cartItem.js";
 import { categoryNav } from "../components/categoryNav.js";
 import { modalCart } from "../components/modal.js";
+import { DomHandler } from "../domHandler.js";
 import { STORE } from "../store.js";
 
 export const mainPage = (() =>{
@@ -10,7 +12,11 @@ export const mainPage = (() =>{
     const filteredProducts = STORE.getProductsByCategory().filter(product => product.name === category);
     const productsContainer = document.querySelector('.results-container');
     productsContainer.innerHTML = "";
-    filteredProducts[0].products.forEach(product => productsContainer.innerHTML += cardProduct(product));
+    filteredProducts[0].products.forEach(product => {
+      productsContainer.innerHTML += cardProduct(product)
+    });
+    const toCart = document.querySelectorAll('.actions-wrapper');
+    toCart.forEach(toCart => toCart.addEventListener('click', addToCart));
   }
 
   function searchProducts(e){
@@ -21,17 +27,29 @@ export const mainPage = (() =>{
     const productsContainer = document.querySelector('.results-container');
     productsContainer.innerHTML = "";
     filteredProducts.forEach(product => productsContainer.innerHTML += cardProduct(product));
+    const toCart = document.querySelectorAll('.actions-wrapper');
+    toCart.forEach(toCart => toCart.addEventListener('click', addToCart));
   }
 
-
+  function addToCart(e){
+    e.preventDefault();
+    const productId = e.target.dataset.id;
+    const product = STORE.getProducts().find(product => product.id === parseInt(productId));
+    STORE.getCart().find(cartItem => cartItem.id === parseInt(product.id)) ? alert('Product already in cart') : 
+                                                                             STORE.setCart(product);
+    
+    const modaltr = document.querySelector('.modal-body tbody');
+    modaltr.innerHTML = STORE.getCart().map(cartItem).join(''); 
+  }
 
   return {
     render: () => {
       const products = STORE.getShuffledProducts();
-      const toinner = products.map(cardProduct).join("");
+      const toinner = products.map(prod => cardProduct(prod)).join("");
 
       const categories = STORE.getCategories();
       const innerCategories = categories.map(categoryNav).join("")
+
       return `
         <header>
           <p class="header--title">My Online Store!</p>
@@ -41,7 +59,7 @@ export const mainPage = (() =>{
             <input id="search" type="text" placeholder="Search" />
           </div>
         </header>
-        ${modalCart()}
+        <div class="ctm">${modalCart()}</div>
 
         <ul class="nav nav-tabs categories-container">
           ${innerCategories}
@@ -58,6 +76,9 @@ export const mainPage = (() =>{
 
       const search = document.querySelector('#search');
       search.addEventListener('keyup', searchProducts);
+
+      const toCart = document.querySelectorAll('.actions-wrapper');
+      toCart.forEach(toCart => toCart.addEventListener('click', addToCart));
     }
   }
 })();

@@ -2,8 +2,6 @@ import { STORE } from "../store.js";
 import { cartItem } from "./cartItem.js";
 
 export const modalCart = () => {
-  const cart = STORE.getProducts();
-  const inner = cart.map(cartItem).join("");
   return `
     <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display:none">
       <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
@@ -29,7 +27,9 @@ export const modalCart = () => {
                 </tr>
               </thead>
               <tbody>
-                ${inner}
+                <tr>
+                  <td>hola</td>
+                </tr>
               </tbody>
             </table> 
             <div class="d-flex justify-content-end">
@@ -42,6 +42,5 @@ export const modalCart = () => {
           </div>
         </div>
       </div>
-    </div>
-  `
+    </div>`
 }
