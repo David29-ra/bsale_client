@@ -5,12 +5,21 @@ import { STORE } from "../store.js";
 export const mainPage = (() =>{
   function filterByCategory(e){
     e.preventDefault();
-    console.log(e.target.innerText);
     const category = e.target.innerText;
     const filteredProducts = STORE.getProductsByCategory().filter(product => product.name === category);
     const productsContainer = document.querySelector('.results-container');
     productsContainer.innerHTML = "";
     filteredProducts[0].products.forEach(product => productsContainer.innerHTML += cardProduct(product));
+  }
+
+  function searchProducts(e){
+    e.preventDefault();
+    console.log(e.target.value);
+    const searchTerm = e.target.value;
+    const filteredProducts = STORE.getProducts().filter(product => product.name.toLowerCase().includes(searchTerm.toLowerCase()));
+    const productsContainer = document.querySelector('.results-container');
+    productsContainer.innerHTML = "";
+    filteredProducts.forEach(product => productsContainer.innerHTML += cardProduct(product));
   }
 
   return {
@@ -26,6 +35,7 @@ export const mainPage = (() =>{
           <div class="icons--container">
             <img class="header--icon" src="./assets/icons/search.svg" />
             <img class="header--icon" src="./assets/icons/car.svg" />
+            <input id="search" type="text" placeholder="Search" />
           </div>
         </header>
 
@@ -41,6 +51,9 @@ export const mainPage = (() =>{
     toListeners: () => {
       const categories = document.querySelectorAll('.categories-container li');
       categories.forEach(category => category.addEventListener('click', filterByCategory));
+
+      const search = document.querySelector('#search');
+      search.addEventListener('keyup', searchProducts);
     }
   }
 })();

@@ -22,6 +22,7 @@
 .product {
   width: 240px;
   position: relative;
+  place-self: center;
 }
 
 .product a {
