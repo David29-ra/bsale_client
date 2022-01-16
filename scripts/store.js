@@ -3,8 +3,8 @@ export const STORE = (function() {
   let productsByCategory = [];
   let categories = []
 
-  function setProductsByCategory(apifetch) {
-    productsByCategory = apifetch;
+  function setProductsByCategory(datafetch) {
+    productsByCategory = datafetch;
     productsByCategory.forEach(category => products = [...products, ...category.products])
     productsByCategory.forEach(category => categories = [...categories, category.name])
   }

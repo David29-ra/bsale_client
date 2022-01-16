@@ -1,4 +1,5 @@
 import { cardProduct } from "../components/cardProduct.js";
+import { categoryNav } from "../components/categoryNav.js";
 import { STORE } from "../store.js";
 
 export const mainPage = (() =>{
@@ -6,6 +7,9 @@ export const mainPage = (() =>{
     render: () => {
       const products = STORE.getShuffledProducts();
       const toinner = products.map(cardProduct).join("");
+
+      const categories = STORE.getCategories();
+      const innerCategories = categories.map(categoryNav).join("")
       return `
         <header>
           <p class="header--title">My Online Store!</p>
@@ -15,29 +19,9 @@ export const mainPage = (() =>{
           </div>
         </header>
 
-        <section class="categories-container">
-          <div class="category-container">
-            <p>category 1</p>
-          </div>
-          <div class="category-container">
-            <p>category 2</p>
-          </div>
-          <div class="category-container">
-            <p>category 3</p>
-          </div>
-          <div class="category-container">
-            <p>category 4</p>
-          </div>
-          <div class="category-container">
-            <p>category 5</p>
-          </div>
-          <div class="category-container">
-            <p>category 6</p>
-          </div>
-          <div class="category-container">
-            <p>category 7</p>
-          </div>
-        </section>
+        <ul class="nav nav-tabs categories-container">
+          ${innerCategories}
+        </ul>
 
         <section class = "results-container">
           ${toinner}

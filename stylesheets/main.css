@@ -62,7 +62,7 @@ header {
 .results-container{
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(6,1fr);
+  grid-template-columns: repeat(4,1fr);
   row-gap: 24px;
   margin-top: 12px;
 }
