@@ -1,9 +1,11 @@
+import { cardProduct } from "../components/cardProduct.js";
 import { STORE } from "../store.js";
 
 export const mainPage = (() =>{
-  console.log(STORE.getProducts());
   return {
     render: () => {
+      const products = STORE.getShuffledProducts();
+      const toinner = products.map(cardProduct).join("");
       return `
         <header>
           <p class="header--title">My Online Store!</p>
@@ -38,31 +40,7 @@ export const mainPage = (() =>{
         </section>
 
         <section class = "results-container">
-          <div class = "result-container">resultado!</div>
-          <div class = "result-container">resultado!</div>
-          <div class = "result-container">resultado!</div>
-          <div class = "result-container">resultado!</div>
-          <div class = "result-container">resultado!</div>
-          <div class = "result-container">resultado!</div>
-          <div class = "result-container">resultado!</div>
-          <div class = "result-container">resultado!</div>
-          <div class = "result-container">resultado!</div>
-          <div class = "result-container">resultado!</div>
-          <div class = "result-container">resultado!</div>
-          <div class = "result-container">resultado!</div>
-          <div class = "result-container">resultado!</div>
-          <div class = "result-container">resultado!</div>
-          <div class = "result-container">resultado!</div>
-          <div class = "result-container">resultado!</div>
-          <div class = "result-container">resultado!</div>
-          <div class = "result-container">resultado!</div>
-          <div class = "result-container">resultado!</div>
-          <div class = "result-container">resultado!</div>
-          <div class = "result-container">resultado!</div>
-          <div class = "result-container">resultado!</div>
-          <div class = "result-container">resultado!</div>
-          <div class = "result-container">resultado!</div>
-          <div class = "result-container">resultado!</div>
+          ${toinner}
         </section>
       `;
     },
