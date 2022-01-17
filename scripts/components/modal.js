@@ -1,6 +1,3 @@
-import { STORE } from "../store.js";
-import { cartItem } from "./cartItem.js";
-
 export const modalCart = () => {
   return `
     <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display:none">
@@ -30,7 +27,7 @@ export const modalCart = () => {
               </tbody>
             </table> 
             <div class="d-flex justify-content-end">
-              <h5>Total: <span class="price text-success">89$</span></h5>
+              <h5>Total: <span class="price text-success"></span></h5>
             </div>
           </div>
           <div class="modal-footer border-top-0 d-flex justify-content-between">

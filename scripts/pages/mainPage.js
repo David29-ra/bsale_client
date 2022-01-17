@@ -56,8 +56,6 @@ export const mainPage = (() => {
 
     const deleteButton = document.querySelectorAll('.btn-sm-close');
     deleteButton.forEach(item => item.addEventListener('click', deleteOfCart));
-
-    console.log(STORE.getCart());
   }
 
   return {
