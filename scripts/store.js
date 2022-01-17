@@ -31,6 +31,9 @@ export const STORE = (function() {
     cart = [...cart, product];
   }
 
+  function deleteItemCart(id) {
+    cart = cart.filter(item => item.id !== parseInt(id));
+  }
   function getCart() {
     return [...cart];
   }
@@ -41,6 +44,7 @@ export const STORE = (function() {
     getProductsByCategory,
     getCategories,
     setCart,
-    getCart
+    getCart,
+    deleteItemCart
   }
 })();

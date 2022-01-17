@@ -27,9 +27,6 @@ export const modalCart = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>hola</td>
-                </tr>
               </tbody>
             </table> 
             <div class="d-flex justify-content-end">

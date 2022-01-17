@@ -14,6 +14,7 @@ export const mainPage = (() => {
     filteredProducts[0].products.forEach(product => {
       productsContainer.innerHTML += cardProduct(product)
     });
+
     const toCart = document.querySelectorAll('.actions-wrapper');
     toCart.forEach(toCart => toCart.addEventListener('click', addToCart));
   }
@@ -26,6 +27,7 @@ export const mainPage = (() => {
     const productsContainer = document.querySelector('.results-container');
     productsContainer.innerHTML = "";
     filteredProducts.forEach(product => productsContainer.innerHTML += cardProduct(product));
+
     const toCart = document.querySelectorAll('.actions-wrapper');
     toCart.forEach(toCart => toCart.addEventListener('click', addToCart));
   }
@@ -38,7 +40,24 @@ export const mainPage = (() => {
                                                                              STORE.setCart(product);
     
     const modaltr = document.querySelector('.modal-body tbody');
-    modaltr.innerHTML = STORE.getCart().map(cartItem).join(''); 
+    modaltr.innerHTML = STORE.getCart().map(cartItem).join('');
+
+    const deleteButton = document.querySelectorAll('.btn-sm-close');
+    deleteButton.forEach(item => item.addEventListener('click', deleteOfCart));
+  }
+
+  function deleteOfCart(e) {
+    e.preventDefault();
+    const productId = e.target.id;
+    STORE.deleteItemCart(productId);;
+    
+    const modaltr = document.querySelector('.modal-body tbody');
+    modaltr.innerHTML = STORE.getCart().map(cartItem).join('');
+
+    const deleteButton = document.querySelectorAll('.btn-sm-close');
+    deleteButton.forEach(item => item.addEventListener('click', deleteOfCart));
+
+    console.log(STORE.getCart());
   }
 
   return {
@@ -58,7 +77,7 @@ export const mainPage = (() => {
             <input id="search" type="text" placeholder="Search" />
           </div>
         </header>
-        <div class="ctm">${modalCart()}</div>
+        ${modalCart()}
 
         <ul class="nav nav-tabs categories-container">
           ${innerCategories}
