@@ -2,11 +2,10 @@ import { cardProduct } from "../components/cardProduct.js";
 import { cartItem } from "../components/cartItem.js";
 import { categoryNav } from "../components/categoryNav.js";
 import { modalCart } from "../components/modal.js";
-import { DomHandler } from "../domHandler.js";
 import { STORE } from "../store.js";
 
-export const mainPage = (() =>{
-  function filterByCategory(e){
+export const mainPage = (() => {
+  function filterByCategory(e) {
     e.preventDefault();
     const category = e.target.innerText;
     const filteredProducts = STORE.getProductsByCategory().filter(product => product.name === category);
@@ -19,7 +18,7 @@ export const mainPage = (() =>{
     toCart.forEach(toCart => toCart.addEventListener('click', addToCart));
   }
 
-  function searchProducts(e){
+  function searchProducts(e) {
     e.preventDefault();
     console.log(e.target.value);
     const searchTerm = e.target.value;
@@ -31,7 +30,7 @@ export const mainPage = (() =>{
     toCart.forEach(toCart => toCart.addEventListener('click', addToCart));
   }
 
-  function addToCart(e){
+  function addToCart(e) {
     e.preventDefault();
     const productId = e.target.dataset.id;
     const product = STORE.getProducts().find(product => product.id === parseInt(productId));
