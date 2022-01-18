@@ -28,12 +28,23 @@ export const STORE = (function() {
   }
 
   function setCart(product) {
-    cart = [...cart, product];
+    cart = [...cart, {...product, qyt: 1}];
+  }
+
+  function editQyt(id, newQyt) {
+    const index = [...cart].findIndex( product => product.id === parseInt(id))
+    cart[index].qyt = newQyt
+  }
+
+  function deleteItemCart(id) {
+    cart = cart.filter(item => item.id !== parseInt(id));
   }
 
   function getCart() {
+    console.log(cart)
     return [...cart];
   }
+  
   return {
     getProducts,
     getShuffledProducts,
@@ -41,6 +52,8 @@ export const STORE = (function() {
     getProductsByCategory,
     getCategories,
     setCart,
-    getCart
+    getCart,
+    deleteItemCart,
+    editQyt
   }
 })();
