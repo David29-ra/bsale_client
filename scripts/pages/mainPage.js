@@ -38,12 +38,47 @@ export const mainPage = (() => {
     const product = STORE.getProducts().find(product => product.id === parseInt(productId));
     STORE.getCart().find(cartItem => cartItem.id === parseInt(product.id)) ? alert('Product already in cart') : 
                                                                              STORE.setCart(product);
+
+    const modaltr = document.querySelector('.modal-body tbody');
+    modaltr.innerHTML = STORE.getCart().map(cartItem).join('');
+    console.log(STORE.getCart());
+
+    const deleteButton = document.querySelectorAll('.btn-sm-close');
+    deleteButton.forEach(item => item.addEventListener('click', deleteOfCart));
+
+    const qytinput = document.querySelectorAll('.modal-body .input .form-control')
+    qytinput.forEach(i => i.addEventListener('keyup', changeQyt))
+
+    const totals = document.querySelectorAll(".modal-body .subtotal")
+    let sumTotals = 0
+    totals.forEach(prices => sumTotals += parseInt(prices.innerText))
+
+    const innerTotal = document.querySelector("h5 span")
+    innerTotal.textContent = `$${sumTotals.toFixed(2)}`
+  }
+
+  function changeQyt(e) {
+    e.preventDefault()
+    
+    const newqyt = e.target.value
+    const id = e.target.id
+    STORE.editQyt(id, newqyt)
     
     const modaltr = document.querySelector('.modal-body tbody');
     modaltr.innerHTML = STORE.getCart().map(cartItem).join('');
 
+    const qytinput = document.querySelectorAll('.modal-body .input .form-control')
+    qytinput.forEach(i => i.addEventListener('keyup', changeQyt))
+
     const deleteButton = document.querySelectorAll('.btn-sm-close');
     deleteButton.forEach(item => item.addEventListener('click', deleteOfCart));
+
+    const totals = document.querySelectorAll(".modal-body .subtotal")
+    let sumTotals = 0
+    totals.forEach(prices => sumTotals += parseInt(prices.innerText))
+
+    const innerTotal = document.querySelector("h5 span")
+    innerTotal.textContent = `$${sumTotals.toFixed(2)}`
   }
 
   function deleteOfCart(e) {
@@ -56,6 +91,16 @@ export const mainPage = (() => {
 
     const deleteButton = document.querySelectorAll('.btn-sm-close');
     deleteButton.forEach(item => item.addEventListener('click', deleteOfCart));
+
+    const qytinput = document.querySelectorAll('.modal-body .input .form-control')
+    qytinput.forEach(i => i.addEventListener('keyup', changeQyt))
+
+    const totals = document.querySelectorAll(".modal-body .subtotal")
+    let sumTotals = 0
+    totals.forEach(prices => sumTotals += parseInt(prices.innerText))
+
+    const innerTotal = document.querySelector("h5 span")
+    innerTotal.textContent = `$${sumTotals.toFixed(2)}`
   }
 
   return {
