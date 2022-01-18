@@ -21,7 +21,6 @@ export const mainPage = (() => {
 
   function searchProducts(e) {
     e.preventDefault();
-    console.log(e.target.value);
     const searchTerm = e.target.value;
     const filteredProducts = STORE.getProducts().filter(product => product.name.toLowerCase().includes(searchTerm.toLowerCase()));
     const productsContainer = document.querySelector('.results-container');
@@ -41,7 +40,6 @@ export const mainPage = (() => {
 
     const modaltr = document.querySelector('.modal-body tbody');
     modaltr.innerHTML = STORE.getCart().map(cartItem).join('');
-    console.log(STORE.getCart());
 
     const deleteButton = document.querySelectorAll('.btn-sm-close');
     deleteButton.forEach(item => item.addEventListener('click', deleteOfCart));
