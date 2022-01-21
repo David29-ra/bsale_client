@@ -1,9 +1,11 @@
 export const cardProduct = function(product) {
   const {id, name, url_image, price, discount} = product;
+  const image = url_image ? url_image : './assets/images/no-image.svg';
+
   return `
     <div class="product">
       <a class="img-wrapper">
-        <img src="${url_image}" alt="${name}" />
+        <img src="${image}" alt="${name}" />
       </a>
       
       <div class="info">
