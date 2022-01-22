@@ -112,7 +112,7 @@ export const mainPage = (() => {
       const innerCategories = categories.map(categoryNav).join("")
 
       return `
-        <div class="stac">
+        <div class="static">
           <header>
             
             <p class="header--title">David Store!</p>
