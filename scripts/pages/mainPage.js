@@ -1,3 +1,4 @@
+import { ALERTS } from "../components/alerts.js";
 import { cardProduct } from "../components/cardProduct.js";
 import { cartItem } from "../components/cartItem.js";
 import { categoryNav } from "../components/categoryNav.js";
@@ -37,8 +38,11 @@ export const mainPage = (() => {
     e.preventDefault();
     const productId = e.target.dataset.id;
     const product = STORE.getProducts().find(product => product.id === parseInt(productId));
-    STORE.getCart().find(cartItem => cartItem.id === parseInt(product.id)) ? alert('Product already in cart') : 
-                                                                             STORE.setCart(product);
+    if(STORE.getCart().find(cartItem => cartItem.id === parseInt(product.id))) ALERTS.alreadyinCart();
+    else {
+      STORE.setCart(product)
+      ALERTS.added();
+    }
 
     const modaltr = document.querySelector('.modal-body tbody')
     const emptyshow = document.querySelector('.empty-table');
@@ -92,6 +96,7 @@ export const mainPage = (() => {
     const emptyshow = document.querySelector('.empty-table');
     emptyshow.innerHTML = "";
     modaltr.innerHTML = STORE.getCart().map(cartItem).join('');
+    ALERTS.deleted();
 
     const deleteButton = document.querySelectorAll('.btn-sm-close');
     deleteButton.forEach(item => item.addEventListener('click', deleteOfCart));
