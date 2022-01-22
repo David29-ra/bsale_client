@@ -40,7 +40,9 @@ export const mainPage = (() => {
     STORE.getCart().find(cartItem => cartItem.id === parseInt(product.id)) ? alert('Product already in cart') : 
                                                                              STORE.setCart(product);
 
-    const modaltr = document.querySelector('.modal-body tbody');
+    const modaltr = document.querySelector('.modal-body tbody')
+    const emptyshow = document.querySelector('.empty-table');
+    emptyshow.innerHTML = "";
     modaltr.innerHTML = STORE.getCart().map(cartItem).join('');
 
     const deleteButton = document.querySelectorAll('.btn-sm-close');
@@ -87,6 +89,8 @@ export const mainPage = (() => {
     STORE.deleteItemCart(productId);;
     
     const modaltr = document.querySelector('.modal-body tbody');
+    const emptyshow = document.querySelector('.empty-table');
+    emptyshow.innerHTML = "";
     modaltr.innerHTML = STORE.getCart().map(cartItem).join('');
 
     const deleteButton = document.querySelectorAll('.btn-sm-close');
@@ -101,6 +105,9 @@ export const mainPage = (() => {
 
     const innerTotal = document.querySelector("h5 span")
     innerTotal.textContent = `$ ${sumTotals.toFixed(2)}`
+
+    STORE.getCart().length === 0 ? emptyshow.innerHTML = `<p>Your cart is empty</p>
+    <img class="empty" src="./assets/images/empty.svg" alt="empty" />` : null
   }
 
   return {
@@ -118,8 +125,8 @@ export const mainPage = (() => {
             <p class="header--title">David Store!</p>
             
             <div class="icons--container">
-              <img data-toggle="modal" data-target="#cartModal" class="icon-cart" src="./assets/icons/car.svg" />
-              <input id="search" type="text" placeholder="Search" />
+              <img data-toggle="modal" data-target="#cartModal" class="icon-cart" src="./assets/icons/cart.png" />
+              <input id="search" type="text" placeholder="&#x1F50D Search" />
             </div>
           </header>
 
