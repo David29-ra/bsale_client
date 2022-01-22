@@ -111,13 +111,15 @@ export const mainPage = (() => {
 
       return `
         <header>
-          <p class="header--title">My Online Store!</p>
+          
+          <p class="header--title">David Store!</p>
+          
           <div class="icons--container">
-            <img class="header--icon" src="./assets/icons/search.svg" />
-            <img data-toggle="modal" data-target="#cartModal" class="header--icon btn btn-success" src="./assets/icons/car.svg" />
+            <img data-toggle="modal" data-target="#cartModal" class="icon-cart" src="./assets/icons/car.svg" />
             <input id="search" type="text" placeholder="Search" />
           </div>
         </header>
+
         ${modalCart()}
 
         <ul class="nav nav-tabs categories-container">
