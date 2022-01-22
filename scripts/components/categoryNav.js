@@ -1,7 +1,7 @@
 export const categoryNav = (categoryName) => {
   return `
     <li class="nav-item">
-      <a class="nav-link" href="#">${categoryName}</a>
+      <a class="nav-link" >${categoryName}</a>
     </li>
   `
 }

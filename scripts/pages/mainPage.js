@@ -8,6 +8,7 @@ export const mainPage = (() => {
   function filterByCategory(e) {
     e.preventDefault();
     const category = e.target.innerText;
+    console.log(e.target);
     const filteredProducts = STORE.getProductsByCategory().filter(product => product.name === category);
     const productsContainer = document.querySelector('.results-container');
     productsContainer.innerHTML = "";
@@ -17,6 +18,7 @@ export const mainPage = (() => {
 
     const toCart = document.querySelectorAll('.actions-wrapper');
     toCart.forEach(toCart => toCart.addEventListener('click', addToCart));
+    window.scrollTo(0,0);
   }
 
   function searchProducts(e) {
@@ -45,14 +47,14 @@ export const mainPage = (() => {
     deleteButton.forEach(item => item.addEventListener('click', deleteOfCart));
 
     const qytinput = document.querySelectorAll('.modal-body .input .form-control')
-    qytinput.forEach(i => i.addEventListener('keyup', changeQyt))
+    qytinput.forEach(i => i.addEventListener('change', changeQyt))
 
-    const totals = document.querySelectorAll(".modal-body .subtotal")
+    const totals = document.querySelectorAll(".modal-body .subtotal span")
     let sumTotals = 0
     totals.forEach(prices => sumTotals += parseInt(prices.innerText))
 
     const innerTotal = document.querySelector("h5 span")
-    innerTotal.textContent = `$${sumTotals.toFixed(2)}`
+    innerTotal.textContent = `$ ${sumTotals.toFixed(2)}`
   }
 
   function changeQyt(e) {
@@ -66,17 +68,17 @@ export const mainPage = (() => {
     modaltr.innerHTML = STORE.getCart().map(cartItem).join('');
 
     const qytinput = document.querySelectorAll('.modal-body .input .form-control')
-    qytinput.forEach(i => i.addEventListener('keyup', changeQyt))
+    qytinput.forEach(i => i.addEventListener('change', changeQyt))
 
     const deleteButton = document.querySelectorAll('.btn-sm-close');
     deleteButton.forEach(item => item.addEventListener('click', deleteOfCart));
 
-    const totals = document.querySelectorAll(".modal-body .subtotal")
+    const totals = document.querySelectorAll(".modal-body .subtotal span")
     let sumTotals = 0
     totals.forEach(prices => sumTotals += parseInt(prices.innerText))
 
     const innerTotal = document.querySelector("h5 span")
-    innerTotal.textContent = `$${sumTotals.toFixed(2)}`
+    innerTotal.textContent = `$ ${sumTotals.toFixed(2)}`
   }
 
   function deleteOfCart(e) {
@@ -91,14 +93,14 @@ export const mainPage = (() => {
     deleteButton.forEach(item => item.addEventListener('click', deleteOfCart));
 
     const qytinput = document.querySelectorAll('.modal-body .input .form-control')
-    qytinput.forEach(i => i.addEventListener('keyup', changeQyt))
+    qytinput.forEach(i => i.addEventListener('change', changeQyt))
 
-    const totals = document.querySelectorAll(".modal-body .subtotal")
+    const totals = document.querySelectorAll(".modal-body .subtotal span")
     let sumTotals = 0
     totals.forEach(prices => sumTotals += parseInt(prices.innerText))
 
     const innerTotal = document.querySelector("h5 span")
-    innerTotal.textContent = `$${sumTotals.toFixed(2)}`
+    innerTotal.textContent = `$ ${sumTotals.toFixed(2)}`
   }
 
   return {
@@ -110,23 +112,26 @@ export const mainPage = (() => {
       const innerCategories = categories.map(categoryNav).join("")
 
       return `
-        <header>
-          <p class="header--title">My Online Store!</p>
-          <div class="icons--container">
-            <img class="header--icon" src="./assets/icons/search.svg" />
-            <img data-toggle="modal" data-target="#cartModal" class="header--icon btn btn-success" src="./assets/icons/car.svg" />
-            <input id="search" type="text" placeholder="Search" />
-          </div>
-        </header>
-        ${modalCart()}
+        <div class="stac">
+          <header>
+            
+            <p class="header--title">David Store!</p>
+            
+            <div class="icons--container">
+              <img data-toggle="modal" data-target="#cartModal" class="icon-cart" src="./assets/icons/car.svg" />
+              <input id="search" type="text" placeholder="Search" />
+            </div>
+          </header>
 
-        <ul class="nav nav-tabs categories-container">
-          ${innerCategories}
-        </ul>
+          <ul class="nav nav-tabs categories-container">
+            ${innerCategories}
+          </ul>
+        </div>
 
         <section class = "results-container">
           ${toinner}
         </section>
+        ${modalCart()}
       `;
     },
     toListeners: () => {
