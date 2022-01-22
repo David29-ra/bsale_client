@@ -8,6 +8,7 @@ export const mainPage = (() => {
   function filterByCategory(e) {
     e.preventDefault();
     const category = e.target.innerText;
+    console.log(e.target);
     const filteredProducts = STORE.getProductsByCategory().filter(product => product.name === category);
     const productsContainer = document.querySelector('.results-container');
     productsContainer.innerHTML = "";
@@ -17,6 +18,7 @@ export const mainPage = (() => {
 
     const toCart = document.querySelectorAll('.actions-wrapper');
     toCart.forEach(toCart => toCart.addEventListener('click', addToCart));
+    window.scrollTo(0,0);
   }
 
   function searchProducts(e) {
@@ -110,25 +112,26 @@ export const mainPage = (() => {
       const innerCategories = categories.map(categoryNav).join("")
 
       return `
-        <header>
-          
-          <p class="header--title">David Store!</p>
-          
-          <div class="icons--container">
-            <img data-toggle="modal" data-target="#cartModal" class="icon-cart" src="./assets/icons/car.svg" />
-            <input id="search" type="text" placeholder="Search" />
-          </div>
-        </header>
+        <div class="stac">
+          <header>
+            
+            <p class="header--title">David Store!</p>
+            
+            <div class="icons--container">
+              <img data-toggle="modal" data-target="#cartModal" class="icon-cart" src="./assets/icons/car.svg" />
+              <input id="search" type="text" placeholder="Search" />
+            </div>
+          </header>
 
-        ${modalCart()}
-
-        <ul class="nav nav-tabs categories-container">
-          ${innerCategories}
-        </ul>
+          <ul class="nav nav-tabs categories-container">
+            ${innerCategories}
+          </ul>
+        </div>
 
         <section class = "results-container">
           ${toinner}
         </section>
+        ${modalCart()}
       `;
     },
     toListeners: () => {
