@@ -137,7 +137,7 @@
 }
 
 .actions-wrapper * {
-  /* width: 50%; */
+  width: 50%;
   padding: 2px 0;
   text-align: center;
   color: #191919;
@@ -150,12 +150,13 @@
   margin-right: 8px;
 }
 
-.cart:hover {
-  color: #0a75b9;
+.actions-wrapper img {
+  width: 30px;
+  height: 30px;
 }
 
-.cart:before {
-  content: \f07a;
+.cart:hover {
+  color: #0a75b9;
 }
 
 .product:hover .actions-wrapper * {
