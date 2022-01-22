@@ -41,7 +41,6 @@ export const STORE = (function() {
   }
 
   function getCart() {
-    console.log(cart)
     return [...cart];
   }
   

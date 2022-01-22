@@ -21,7 +21,6 @@ export const mainPage = (() => {
 
   function searchProducts(e) {
     e.preventDefault();
-    console.log(e.target.value);
     const searchTerm = e.target.value;
     const filteredProducts = STORE.getProducts().filter(product => product.name.toLowerCase().includes(searchTerm.toLowerCase()));
     const productsContainer = document.querySelector('.results-container');
@@ -41,20 +40,19 @@ export const mainPage = (() => {
 
     const modaltr = document.querySelector('.modal-body tbody');
     modaltr.innerHTML = STORE.getCart().map(cartItem).join('');
-    console.log(STORE.getCart());
 
     const deleteButton = document.querySelectorAll('.btn-sm-close');
     deleteButton.forEach(item => item.addEventListener('click', deleteOfCart));
 
     const qytinput = document.querySelectorAll('.modal-body .input .form-control')
-    qytinput.forEach(i => i.addEventListener('keyup', changeQyt))
+    qytinput.forEach(i => i.addEventListener('change', changeQyt))
 
-    const totals = document.querySelectorAll(".modal-body .subtotal")
+    const totals = document.querySelectorAll(".modal-body .subtotal span")
     let sumTotals = 0
     totals.forEach(prices => sumTotals += parseInt(prices.innerText))
 
     const innerTotal = document.querySelector("h5 span")
-    innerTotal.textContent = `$${sumTotals.toFixed(2)}`
+    innerTotal.textContent = `$ ${sumTotals.toFixed(2)}`
   }
 
   function changeQyt(e) {
@@ -68,17 +66,17 @@ export const mainPage = (() => {
     modaltr.innerHTML = STORE.getCart().map(cartItem).join('');
 
     const qytinput = document.querySelectorAll('.modal-body .input .form-control')
-    qytinput.forEach(i => i.addEventListener('keyup', changeQyt))
+    qytinput.forEach(i => i.addEventListener('change', changeQyt))
 
     const deleteButton = document.querySelectorAll('.btn-sm-close');
     deleteButton.forEach(item => item.addEventListener('click', deleteOfCart));
 
-    const totals = document.querySelectorAll(".modal-body .subtotal")
+    const totals = document.querySelectorAll(".modal-body .subtotal span")
     let sumTotals = 0
     totals.forEach(prices => sumTotals += parseInt(prices.innerText))
 
     const innerTotal = document.querySelector("h5 span")
-    innerTotal.textContent = `$${sumTotals.toFixed(2)}`
+    innerTotal.textContent = `$ ${sumTotals.toFixed(2)}`
   }
 
   function deleteOfCart(e) {
@@ -93,14 +91,14 @@ export const mainPage = (() => {
     deleteButton.forEach(item => item.addEventListener('click', deleteOfCart));
 
     const qytinput = document.querySelectorAll('.modal-body .input .form-control')
-    qytinput.forEach(i => i.addEventListener('keyup', changeQyt))
+    qytinput.forEach(i => i.addEventListener('change', changeQyt))
 
-    const totals = document.querySelectorAll(".modal-body .subtotal")
+    const totals = document.querySelectorAll(".modal-body .subtotal span")
     let sumTotals = 0
     totals.forEach(prices => sumTotals += parseInt(prices.innerText))
 
     const innerTotal = document.querySelector("h5 span")
-    innerTotal.textContent = `$${sumTotals.toFixed(2)}`
+    innerTotal.textContent = `$ ${sumTotals.toFixed(2)}`
   }
 
   return {
