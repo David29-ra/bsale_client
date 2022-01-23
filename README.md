@@ -64,6 +64,26 @@ The result of the frontend is a website that can be seen in the following link:
 
     For the user experience, the web site use Listeners of DOM to manage the interaction between the user and the website.
 
+## Diagram
+<br/>
+
+![img](./screenshoot/bsaleapp.png)
+
+    The diagram is a simple diagram of the structure of the project.
+
+    The structure of the project is:
+    
+    * Mysql instance in aws.
+
+    * Ruby on Rails connect wit the database using the credentials of the aws.
+
+    * Backend API using RoR, return all products filtered by the category.
+
+    * Frontend UI/UX using Js(vanilla), get the data from the backend API using FETCH(api for js to make HTTP requests) and show it in the website.
+
+    * Helpers of the frontend, like the capitalization of the name of the product.
+    
+
 <br/><br/>
 ### Ready, you can enjoy!
 
