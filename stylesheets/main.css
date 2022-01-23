@@ -77,9 +77,49 @@ input[type="text"]:focus {
 .results-container {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(4,1fr);
   gap: 20px;
   margin-top: 12px;
   overflow: hidden;
   padding-top: 120px;
 }
+
+
+@media only screen and (max-width: 480px) {
+  header {
+    flex-direction: column;
+    height: 120px;
+    justify-content: center;
+    gap: 10px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .results-container {
+    grid-template-columns: repeat(1,1fr); 
+  }
+}
+
+@media screen and (min-width: 560px) {
+  .results-container {
+    grid-template-columns: repeat(2,1fr); 
+  }
+}
+
+@media screen and (min-width: 810px) {
+  .results-container {
+    grid-template-columns: repeat(3,1fr); 
+  }
+}
+
+@media screen and (min-width: 1060px) {
+  .results-container {
+    grid-template-columns: repeat(4,1fr); 
+  }
+}
+
+@media screen and (min-width: 1310px) {
+  .results-container {
+    grid-template-columns: repeat(5,1fr); 
+  }
+}
+  

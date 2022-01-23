@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;1,400;1,500&display=swap');
 
+.modal-dialog-centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .table-image, thead, th {
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
@@ -75,4 +81,80 @@ input[type=number] {
 .img-fluid.img-thumbnail {
   width: 70%;
   height: 70%;
+}
+
+@media screen and (max-width: 992px) {
+  .modal-dialog-centered {
+    max-width: 80%;
+  }
+}
+
+@media screen and (max-width: 858px) {
+  .table-image, tbody, td {
+    font-weight: 500;
+    font-size: 12px;
+  }
+  input[type=number] {
+    font-size: 10px;
+    width: 80%;
+    text-align: center;
+  }
+  .table-image, thead, th {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 775px) {
+  .table-image, tbody, td {
+    font-weight: 500;
+    font-size: 10px;
+  }
+  input[type=number] {
+    font-size: 8px;
+    width: 80%;
+    text-align: center;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 677px) {
+  .table-image, tbody, td {
+    font-weight: 500;
+    font-size: 8px;
+  }
+  .table-image, thead, th {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 585px) {
+  .modal-dialog-centered {
+    max-width: 100%;
+  }
+  .table-image, tbody, td {
+    font-weight: 500;
+    font-size: 12px;
+  }
+  .table-image, thead, th {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .modal-dialog {
+    margin: 0 auto;
+  } 
+}
+
+@media screen and (max-width: 480px) {
+  .modal-dialog-centered {
+    max-width: 100%;
+  }
+  .empty-table {
+    flex-direction: column;
+  }
+  .empty-table img {
+    width: 150px;
+    height: 150px;
+  }
 }
