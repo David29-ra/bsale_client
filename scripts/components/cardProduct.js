@@ -21,7 +21,7 @@ export const cardProduct = function(product) {
 
       
       <div class="actions-wrapper">
-        <a data-id=${id} href="#" class="add-btn cart">&#x1F6D2 Cart</a>
+        <a data-id=${id} href="#" class="add-btn cart"><img src="./assets/icons/addcart.png" alt="add to cart" /> add to Cart</a>
       </div>
     </div>
   `

@@ -25,7 +25,11 @@ export const modalCart = () => {
               </thead>
               <tbody>
               </tbody>
-            </table> 
+            </table>
+            <div class="empty-table">
+              <p>Your cart is empty</p>
+              <img class="empty" src="./assets/images/empty.svg" alt="empty" />
+            </div>
             <div class="d-flex justify-content-end">
               <h5>Total: <span class="price-total text-success">$ 0.00</span></h5>
             </div>

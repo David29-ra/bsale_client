@@ -13,6 +13,24 @@
   font-size: 14px;
 }
 
+.empty-table {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+.empty-table p {
+  font-size: 18px;
+  font-weight: 500;
+  color: rgb(105, 97, 97);
+}
+
+.empty-table img {
+  width: 250px;
+  height: 250px;
+}
+
 .table-image td, th {
   vertical-align: middle;
   text-align: center;
