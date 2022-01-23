@@ -6,7 +6,7 @@ export const ALERTS = (function (){
       icon: 'success',
       title: 'Your product has been added to the cart!',
       showConfirmButton: false,
-      timer: 1500
+      timer: 1200
     })
   }
 
@@ -17,7 +17,7 @@ export const ALERTS = (function (){
       icon: 'info',
       title: 'Your product is already in the cart!',
       showConfirmButton: false,
-      timer: 1500
+      timer: 1200
     })
   }
 
@@ -28,14 +28,36 @@ export const ALERTS = (function (){
       icon: 'warning',
       title: 'Your product has been deleted from the cart!',
       showConfirmButton: false,
-      timer: 1500
+      timer: 1200
     })
   }
 
+  function makeShop() {
+    return Swal.fire({
+      position: 'center',
+      width: 300,
+      icon: 'success',
+      title: 'Your purchase has been made!',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  }
+  function emptyCart() {
+    return Swal.fire({
+      position: 'center',
+      width: 300,
+      icon: 'warning',
+      title: 'Your cart is empty!',
+      showConfirmButton: false,
+      timer: 1000
+    })
+  }
   return {
     added,
     alreadyinCart,
-    deleted
+    deleted,
+    makeShop,
+    emptyCart
   }
 
 })()

@@ -36,7 +36,7 @@ export const modalCart = () => {
           </div>
           <div class="modal-footer border-top-0 d-flex justify-content-between">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-success">Checkout</button>
+            <button type="button" class="btn btn-success">Buy</button>
           </div>
         </div>
       </div>

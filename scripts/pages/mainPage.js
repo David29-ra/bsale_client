@@ -85,6 +85,13 @@ export const mainPage = (() => {
     INNERS.drawEmpty()
   }
 
+  function buySuccess(e) {
+    e.preventDefault()
+    if(STORE.getCart().length === 0) ALERTS.emptyCart();
+    else ALERTS.makeShop()
+    console.log('buy success')
+  }
+
   return {
     render: () => {
       const products = STORE.getShuffledProducts();
@@ -125,6 +132,9 @@ export const mainPage = (() => {
 
       const toCart = document.querySelectorAll('.actions-wrapper');
       toCart.forEach(toCart => toCart.addEventListener('click', addToCart));
+
+      const success = document.querySelector('.btn.btn-success');
+      success.addEventListener('click', buySuccess);
     }
   }
 })();
