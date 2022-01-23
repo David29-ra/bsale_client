@@ -3,22 +3,19 @@ import { cardProduct } from "../components/cardProduct.js";
 import { cartItem } from "../components/cartItem.js";
 import { categoryNav } from "../components/categoryNav.js";
 import { modalCart } from "../components/modal.js";
+import { INNERS } from "../inners/inners.js";
 import { STORE } from "../store.js";
 
 export const mainPage = (() => {
   function filterByCategory(e) {
     e.preventDefault();
     const category = e.target.innerText;
-    console.log(e.target);
     const filteredProducts = STORE.getProductsByCategory().filter(product => product.name === category);
-    const productsContainer = document.querySelector('.results-container');
-    productsContainer.innerHTML = "";
-    filteredProducts[0].products.forEach(product => {
-      productsContainer.innerHTML += cardProduct(product)
-    });
+    INNERS.writeProductsForCategory(filteredProducts);
 
     const toCart = document.querySelectorAll('.actions-wrapper');
     toCart.forEach(toCart => toCart.addEventListener('click', addToCart));
+
     window.scrollTo(0,0);
   }
 
@@ -26,10 +23,8 @@ export const mainPage = (() => {
     e.preventDefault();
     const searchTerm = e.target.value;
     const filteredProducts = STORE.getProducts().filter(product => product.name.toLowerCase().includes(searchTerm.toLowerCase()));
-    const productsContainer = document.querySelector('.results-container');
-    productsContainer.innerHTML = "";
-    filteredProducts.forEach(product => productsContainer.innerHTML += cardProduct(product));
-
+    INNERS.writeProductsBySearch(filteredProducts);
+    
     const toCart = document.querySelectorAll('.actions-wrapper');
     toCart.forEach(toCart => toCart.addEventListener('click', addToCart));
   }
@@ -43,11 +38,7 @@ export const mainPage = (() => {
       STORE.setCart(product)
       ALERTS.added();
     }
-
-    const modaltr = document.querySelector('.modal-body tbody')
-    const emptyshow = document.querySelector('.empty-table');
-    emptyshow.innerHTML = "";
-    modaltr.innerHTML = STORE.getCart().map(cartItem).join('');
+    INNERS.writeOnCart();
 
     const deleteButton = document.querySelectorAll('.btn-sm-close');
     deleteButton.forEach(item => item.addEventListener('click', deleteOfCart));
@@ -55,17 +46,11 @@ export const mainPage = (() => {
     const qytinput = document.querySelectorAll('.modal-body .input .form-control')
     qytinput.forEach(i => i.addEventListener('change', changeQyt))
 
-    const totals = document.querySelectorAll(".modal-body .subtotal span")
-    let sumTotals = 0
-    totals.forEach(prices => sumTotals += parseInt(prices.innerText))
-
-    const innerTotal = document.querySelector("h5 span")
-    innerTotal.textContent = `$ ${sumTotals.toFixed(2)}`
+    INNERS.getTotalPrice();
   }
 
   function changeQyt(e) {
     e.preventDefault()
-    
     const newqyt = e.target.value
     const id = e.target.id
     STORE.editQyt(id, newqyt)
@@ -79,12 +64,7 @@ export const mainPage = (() => {
     const deleteButton = document.querySelectorAll('.btn-sm-close');
     deleteButton.forEach(item => item.addEventListener('click', deleteOfCart));
 
-    const totals = document.querySelectorAll(".modal-body .subtotal span")
-    let sumTotals = 0
-    totals.forEach(prices => sumTotals += parseInt(prices.innerText))
-
-    const innerTotal = document.querySelector("h5 span")
-    innerTotal.textContent = `$ ${sumTotals.toFixed(2)}`
+    INNERS.getTotalPrice();
   }
 
   function deleteOfCart(e) {
@@ -92,10 +72,7 @@ export const mainPage = (() => {
     const productId = e.target.id;
     STORE.deleteItemCart(productId);;
     
-    const modaltr = document.querySelector('.modal-body tbody');
-    const emptyshow = document.querySelector('.empty-table');
-    emptyshow.innerHTML = "";
-    modaltr.innerHTML = STORE.getCart().map(cartItem).join('');
+    INNERS.writeOnCart();
     ALERTS.deleted();
 
     const deleteButton = document.querySelectorAll('.btn-sm-close');
@@ -104,15 +81,8 @@ export const mainPage = (() => {
     const qytinput = document.querySelectorAll('.modal-body .input .form-control')
     qytinput.forEach(i => i.addEventListener('change', changeQyt))
 
-    const totals = document.querySelectorAll(".modal-body .subtotal span")
-    let sumTotals = 0
-    totals.forEach(prices => sumTotals += parseInt(prices.innerText))
-
-    const innerTotal = document.querySelector("h5 span")
-    innerTotal.textContent = `$ ${sumTotals.toFixed(2)}`
-
-    STORE.getCart().length === 0 ? emptyshow.innerHTML = `<p>Your cart is empty</p>
-    <img class="empty" src="./assets/images/empty.svg" alt="empty" />` : null
+    INNERS.getTotalPrice();
+    INNERS.drawEmpty()
   }
 
   return {
