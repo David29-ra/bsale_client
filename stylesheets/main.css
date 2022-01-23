@@ -83,6 +83,24 @@ input[type="text"]:focus {
   padding-top: 120px;
 }
 
+@media screen and (max-width: 479px) {
+  .results-container {
+    padding-top: 267px;
+  }
+}
+
+@media screen and (min-width: 479px) {
+  .results-container {
+    padding-top: 160px;
+  }
+}
+
+@media screen and (width: 479px) and (width: 480px) {
+  .results-container {
+    padding-top: 220px;
+  }
+}
+
 @media only screen and (max-width: 480px) {
   header {
     flex-direction: column;
@@ -90,15 +108,11 @@ input[type="text"]:focus {
     justify-content: center;
     gap: 10px;
   }
-
-  .results-container {
-    padding-top: 230px;
-  }
 }
 
-@media screen and (max-width: 560px) {
+@media screen and (max-width: 560px) and (min-width: 480px) {
   .results-container {
-    grid-template-columns: repeat(1,1fr); 
+    grid-template-columns: repeat(1,1fr);
   }
 }
 
@@ -114,6 +128,12 @@ input[type="text"]:focus {
   }
 }
 
+@media screen and (min-width: 916px) {
+  .results-container {
+    padding-top: 113px;
+  }
+}
+
 @media screen and (min-width: 1060px) {
   .results-container {
     grid-template-columns: repeat(4,1fr); 
@@ -126,3 +146,8 @@ input[type="text"]:focus {
   }
 }
   
+@media screen and (max-width: 347px) {
+  .results-container {
+    padding-top: 314px;
+  }
+}
