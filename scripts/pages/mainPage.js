@@ -100,6 +100,7 @@ export const mainPage = (() => {
       const toinner = products.map(prod => cardProduct(prod)).join("");
 
       const categories = STORE.getCategories();
+      categories.sort().push('ofertas', 'todos');
       const innerCategories = categories.map(categoryNav).join("")
 
       return `

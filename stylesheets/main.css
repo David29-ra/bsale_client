@@ -83,13 +83,16 @@ input[type="text"]:focus {
   padding-top: 120px;
 }
 
-
 @media only screen and (max-width: 480px) {
   header {
     flex-direction: column;
     height: 120px;
     justify-content: center;
     gap: 10px;
+  }
+
+  .results-container {
+    padding-top: 230px;
   }
 }
 
