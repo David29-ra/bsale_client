@@ -82,7 +82,15 @@ The result of the frontend is a website that can be seen in the following link:
     * Frontend UI/UX using Js(vanilla), get the data from the backend API using FETCH(api for js to make HTTP requests) and show it in the website.
 
     * Helpers of the frontend, like the capitalization of the name of the product.
-    
+
+
+## How it works
+
+    The app is a online store where you can add products on your cart (it doens't have a pay methods), and you can see the products filtered by the category and oferts. Also you can search any product by its name.
+
+![img](./screenshoot/viewapp.png)
+
+The result of the frontend is a website that can be seen in the following link:
 
 <br/><br/>
 ### Ready, you can enjoy!
