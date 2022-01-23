@@ -53,7 +53,10 @@ export const mainPage = (() => {
     e.preventDefault()
     const newqyt = e.target.value
     const id = e.target.id
-    STORE.editQyt(id, newqyt)
+    if(parseInt(newqyt) === 0) {
+      STORE.editQyt(id, 1)
+      ALERTS.notZero()
+    } else STORE.editQyt(id, newqyt)
     
     const modaltr = document.querySelector('.modal-body tbody');
     modaltr.innerHTML = STORE.getCart().map(cartItem).join('');
@@ -89,7 +92,6 @@ export const mainPage = (() => {
     e.preventDefault()
     if(STORE.getCart().length === 0) ALERTS.emptyCart();
     else ALERTS.makeShop()
-    console.log('buy success')
   }
 
   return {

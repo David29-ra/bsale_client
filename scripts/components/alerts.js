@@ -42,6 +42,7 @@ export const ALERTS = (function (){
       timer: 1500
     })
   }
+
   function emptyCart() {
     return Swal.fire({
       position: 'center',
@@ -52,12 +53,25 @@ export const ALERTS = (function (){
       timer: 1000
     })
   }
+
+  function notZero() {
+    return Swal.fire({
+      position: 'top-end',
+      width: 300,
+      icon: 'info',
+      title: 'Quantity must be greater than 0!',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  }
+  
   return {
     added,
     alreadyinCart,
     deleted,
     makeShop,
-    emptyCart
+    emptyCart,
+    notZero
   }
 
 })()
