@@ -3,15 +3,16 @@ import { cardProduct } from "../components/cardProduct.js";
 import { cartItem } from "../components/cartItem.js";
 import { categoryNav } from "../components/categoryNav.js";
 import { modalCart } from "../components/modal.js";
+import { switchCategory } from "../helpers/switchCatergories.js";
 import { INNERS } from "../inners/inners.js";
 import { STORE } from "../store.js";
 
 export const mainPage = (() => {
   function filterByCategory(e) {
     e.preventDefault();
-    const category = e.target.innerText;
-    const filteredProducts = STORE.getProductsByCategory().filter(product => product.name === category);
-    INNERS.writeProductsForCategory(filteredProducts);
+    const category = e.target.innerText.toLowerCase();
+    console.log(category);
+    switchCategory(category);
 
     const toCart = document.querySelectorAll('.actions-wrapper');
     toCart.forEach(toCart => toCart.addEventListener('click', addToCart));
@@ -111,7 +112,7 @@ export const mainPage = (() => {
             
             <div class="icons--container">
               <img data-toggle="modal" data-target="#cartModal" class="icon-cart" src="./assets/icons/cart.png" />
-              <input id="search" type="text" placeholder="&#x1F50D Search" />
+              <input id="search" type="text" placeholder="&#x1F50D Search by Name" />
             </div>
           </header>
 

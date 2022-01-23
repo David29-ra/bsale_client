@@ -11,6 +11,14 @@ export const INNERS = (function () {
     });
   }
 
+  function writeProducts(products) {
+    const productsContainer = document.querySelector('.results-container');
+    productsContainer.innerHTML = "";
+    products.forEach(product => {
+      productsContainer.innerHTML += cardProduct(product)
+    });
+  }
+
   function writeProductsBySearch(productsSearched) {
     const productsContainer = document.querySelector('.results-container');
     productsContainer.innerHTML = "";
@@ -43,6 +51,7 @@ export const INNERS = (function () {
     writeProductsForCategory,
     writeOnCart,
     getTotalPrice,
-    drawEmpty
+    drawEmpty,
+    writeProducts
   }
 })()
