@@ -11,7 +11,6 @@ export const mainPage = (() => {
   function filterByCategory(e) {
     e.preventDefault();
     const category = e.target.innerText.toLowerCase();
-    console.log(category);
     switchCategory(category);
 
     const toCart = document.querySelectorAll('.actions-wrapper');
