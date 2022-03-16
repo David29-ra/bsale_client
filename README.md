@@ -92,7 +92,7 @@ The result of the frontend is a website that can be seen in the following link:
 
 The result of the frontend is a website that can be seen in the following link:
 
-https://davidrivas-store01.herokuapp.com/
+https://david-rivas-store1.herokuapp.com/
 
 <br/><br/>
 ### Ready, you can enjoy!
